@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Express Login Demo</title>
+  </head>
+  <body>
+    <h1>Express Login Form Demo</h1>
+    <label>Username:</label>
+    <input type='TEXT' id='user' size='40'><br>
+    <label>Password:</label>
+    <input type='password' id='password' size='40'><br>
+    <input type='button' id='submit' value='Submit'>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'>  </script>
+    <script>
+      $(document).ready(function(){
+        var user,pass;
+        $('#submit').click(function(){
+          user=$('#user').val();
+          pass=$('#password').val();
+          $.post('http://localhost:3000/login',{user: user, password: pass},
+          function(data){
+            if(data==='done')
+              {
+                alert('Data back is login success');
+              }
+          });
+        });
+      });
+    </script>
+
+  </body>
+</html>
